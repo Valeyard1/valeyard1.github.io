@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+
+<h1></h1>
 
 <p align="center">
     <b><font size="10">Leonardo Ferreira</font></b><br>
@@ -6,4 +9,5 @@
     <a href="mailto:leoessia1@outlook.com"><img src="img/mail-32px.png"></a>
 </p>
 
-[![GitHub-logo](img/GitHub-Mark-32px.png)](https://github.com/Valeyard1)
+</body>
+</html>
