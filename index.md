@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <h1></h1>
 
 <p align="center">
@@ -9,5 +7,3 @@
     <a href="mailto:leoessia1@outlook.com"><img src="img/mail-32px.png"></a>
 </p>
 
-</body>
-</html>
