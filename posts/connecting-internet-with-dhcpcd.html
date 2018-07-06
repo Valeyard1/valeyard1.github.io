@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-        <title>Leonardo Ferreira</title>
+        <title>How to connect to the internet with wpa supplicant</title>
         <style type="text/css">
 body {
     margin:40px auto;
-    max-width:650px;
+    max-width:750px;
     line-height:1.6;
     font-size:18px;
     color:#ebdbb2;
@@ -22,55 +21,40 @@ body {
 
         <h3><a href="../index.html">← Home</a></h3>
 
-        <h1 id="how-to-connect-to-the-internet-with-wpa-_supplicant-and-dhcpcd">How to connect to the internet with wpa_supplicant and dhcpcd</h1>
-
+        <h2 id="how-to-connect-to-the-internet-with-wpa-_supplicant-and-dhcpcd">How to connect to the internet with wpa_supplicant and dhcpcd</h2>
+        <hr>
         <p>When installing a distro with a minimal installation, you have to connect to
         the internet via command line. I&#39;m gonna show how to connect with the simplest
         tool to do it.</p>
-
         <p>You need the necessary packages to do it. However, they are in almost distribution.</p>
-
         <ul>
             <li>wpa_supplicant</li>
             <li>dhcpcd</li>
         </ul>
-
         <p>On Arch Linux:</p>
         <pre><code>$ sudo pacman -S wp<span class="hljs-built_in">a_supplicant</span> dhcpcd
-
         </code></pre><p>On Ubuntu:</p>
         <pre><code>$ sudo apt install wp<span class="hljs-built_in">a_supplicant</span> dhcpcdp
-
         </code></pre><p>On <a href="https://voidlinux.org/">Void Linux</a>:</p>
         <pre><code>$ sudo xbps-install -S wp<span class="hljs-built_in">a_supplicant</span> dhcpcd
-
         </code></pre><p>Now you need to enable the wireless interface to connect, to see what&#39;s your interface,
         run:</p>
         <pre><code>$ <span class="hljs-built_in">ip</span> link show
-
         </code></pre><p>The interface should be <code>wlp6s0</code>, <code>wlp2s0</code> or something like that. To enable the interface, run:</p>
         <pre><code><span class="hljs-symbol">$</span> sudo ip link <span class="hljs-keyword">set</span> up <span class="hljs-comment">&lt;interface&gt;</span>
-
-
         </code></pre><p>To connect to a normal wifi (WPA-PSK networks), we must generate the configuration file
         with _wpa_passphrase_.</p>
-
         <pre><code><span class="hljs-meta"># wpa_passhprase <span class="hljs-meta-string">&lt;SSID&gt;</span> <span class="hljs-meta-string">&lt;PASSWORD&gt;</span> &gt;&gt; /etc/wpa_supplicant/wpa_supplicant-<span class="hljs-meta-string">&lt;device_name&gt;</span>.conf</span>
-
         </code></pre><p>Your file should be like this:</p>
         <pre><code>network={
     ssid=<span class="hljs-string">"SSID"</span>
     <span class="hljs-meta">#psk=<span class="hljs-string">"PASSWORD"</span></span>
     psk=<span class="hljs-params">&lt;some_numbers&gt;</span>
 }
-
         </code></pre><p>Now you have to start the DHCP client to enable the internet.</p>
         <pre><code><span class="hljs-variable">$ </span>dhcpcd
         </code></pre><p>Your internet is configured and ready to use!</p>
-
-
-        <h2 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h2>
-
+        <h3 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h3>
         <p>You may want to always connect automatically when you are close to the wifi, to do this, you
         have to tell your system to enable the DHCP by default. You do it with your <a href="https://en.wikipedia.org/wiki/Init">init</a> system:</p>
 
@@ -79,13 +63,9 @@ body {
 
         <p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> as an init system:</p>
         <pre><code>$ sudo systemctl <span class="hljs-built_in">enable</span> dhcpcd.service
-
         </code></pre><p>If you are using <a href="https://wiki.voidlinux.eu/Runit">Runit</a> as an init system:</p>
         <pre><code># ln -s <span class="hljs-regexp">/etc/</span>sv<span class="hljs-regexp">/dhcpcd /</span>var<span class="hljs-regexp">/service/</span>
-
-
-
-        </code></pre><p>$(date): 05/07/2018</p>
+        <h5 id="date">$(date): 05/07/2018</h5>
 
 
 
