@@ -1,48 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>How to connect to the internet with wpa supplicant</title>
-        <style type="text/css">
-body {
-    margin:40px auto;
-    max-width:750px;
-    line-height:1.6;
-    font-size:18px;
-    color:#ebdbb2;
-    padding:0 10px
-}
+        <title>
 
- /* unvisited link: blue */
-a:link {
-    color: #458588;
-}
+            How to connect to the internet with wpa supplicant
 
-/* visited link: red */
-a:visited {
-    color: #cc241d;
-}
-
-/* mouse over link: aqua */
-a:hover {
-    color: #689d6a;
-}
-
-/* selected link */
-a:active {
-    color: #d65d0e;
-}
-
-    h1,h2,h3{
-        line-height:1.2
-    }
-        </style>
+        </title>
+<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,600,800" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
     </head>
 
-    <body bgcolor="#282828">
 
-<h3 id="-home-index-html-"><a href="../index.html">← Home</a></h3>
-<h2 id="how-to-connect-to-the-internet-with-wpa_supplicant-and-dhcpcd">How to connect to the internet with wpa supplicant and dhcpcd</h2>
-<hr>
+<h6 id="-home-index-html-"><a href="../index.html">← Home</a></h6>
+<h3 class="title">How to connect to the internet with wpa supplicant</h3>
+<p>Jul 05, 2018</p>
+
+<br>
 <p>When installing a distro with a minimal installation, you have to connect to the internet via command line. I&#39;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don't want packages we don't need.</p>
 <p>We are going to use these packages:</p>
 <ul>
@@ -74,14 +47,17 @@ The interface we need should be <code>wlp6s0</code>, <code>wlp2s0</code> or some
 </code></pre><p>Now you have to start the DHCP client to enable the internet.</p>
 <pre><code><span class="hljs-variable">$ </span>dhcpcd &amp;
 </code></pre><p>Your internet is configured and ready to use!</p>
-<h3 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h3>
+<h4 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h4>
 <p>You may want to always connect automatically when you are close to the wifi, to do this, you have to tell your system to enable the DHCP by default. You do it with your <a href="https://en.wikipedia.org/wiki/Init">init</a> system:</p>
 <p><b>Obs:</b> <em>If you don&#39;t know what a init system is, you are probably using systemd, which is present in almost every linux distribution, such as Ubuntu, Mint, and derivates.</em></p>
 <p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> as an init system:</p>
-<pre><code>$ sudo systemctl <span class="hljs-built_in">enable</span> dhcpcd.service
+<pre><code># systemctl <span class="hljs-built_in">enable</span> dhcpcd.service
 </code></pre><p>If you are using <a href="https://wiki.voidlinux.eu/Runit">Runit</a> as an init system:</p>
-<pre><code># ln -s <span class="hljs-regexp">/etc/</span>sv<span class="hljs-regexp">/dhcpcd /</span>var<span class="hljs-regexp">/service/</span>
-</code></pre><p align="center"><font color="#458588">$(date): 05/07/2018</font></p>
+<pre><code># ln -s <span class="hljs-regexp">/etc/</span>sv<span class="hljs-regexp">/dhcpcd /</span>var<span class="hljs-regexp">/service/</span></code></pre>
+<hr>
+    <p align="center">
+    <a href="about/index.html">About</a><br>
+    </p>
     </body>
 </html>
 
