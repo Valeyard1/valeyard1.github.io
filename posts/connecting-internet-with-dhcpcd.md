@@ -50,7 +50,7 @@ Now you have to start the DHCP client to enable the internet.
 
 Your internet is configured and ready to use!
 
-# Connect automatically on the boot up
+## Connect automatically on the boot up
 
 You may want to always connect automatically when you are close to the wifi, to do this, you
 have to tell your system to enable the DHCP by default. You do it with your [init](https://en.wikipedia.org/wiki/Init) system:
