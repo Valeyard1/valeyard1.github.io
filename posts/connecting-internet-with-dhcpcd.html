@@ -64,7 +64,7 @@ a:active {
         </code></pre><p>The interface should be <code>wlp6s0</code>, <code>wlp2s0</code> or something like that. To enable the interface, run:</p>
         <pre><code><span class="hljs-symbol">$</span> sudo ip link <span class="hljs-keyword">set</span> up <span class="hljs-comment">&lt;interface&gt;</span>
         </code></pre><p>To connect to a normal wifi (WPA-PSK networks), we must generate the configuration file
-        with _wpa_passphrase_.</p>
+        with <i>wpa_passphrase</i>.</p>
         <pre><code><span class="hljs-meta"># wpa_passhprase <span class="hljs-meta-string">&lt;SSID&gt;</span> <span class="hljs-meta-string">&lt;PASSWORD&gt;</span> &gt;&gt; /etc/wpa_supplicant/wpa_supplicant-<span class="hljs-meta-string">&lt;device_name&gt;</span>.conf</span>
         </code></pre><p>Your file should be like this:</p>
         <pre><code>network={
@@ -79,8 +79,8 @@ a:active {
         <p>You may want to always connect automatically when you are close to the wifi, to do this, you
         have to tell your system to enable the DHCP by default. You do it with your <a href="https://en.wikipedia.org/wiki/Init">init</a> system:</p>
 
-        <p><em>Obs:</em> _If you don&#39;t know what is it, you are probably using <em>systemd</em>, which is present in almost
-        every linux distribution, such as Ubuntu, Mint, and derivates._</p>
+        <p><em>Obs:</em> <i>If you don&#39;t know what is it, you are probably using <em>systemd</em>, which is present in almost
+            every linux distribution, such as Ubuntu, Mint, and derivates.</i></p>
 
         <p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> as an init system:</p>
         <pre><code>$ sudo systemctl <span class="hljs-built_in">enable</span> dhcpcd.service
