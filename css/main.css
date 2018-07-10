@@ -88,3 +88,65 @@ hr {
     border-top: 1px solid #ebdbb2;
 }
 
+.hljs {
+    display: block;
+    overflow-x: auto;
+    background: #1d2021;
+}
+
+.hljs,
+.hljs-subst {
+    color: #FFFEFC;
+}
+
+.hljs-comment {
+    color: #495F76;
+}
+
+.hljs-type,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-template-tag,
+.hljs-deletion {
+    color: #FFFEFC;
+}
+
+.hljs-string,
+.hljs-number,
+.hljs-quote {
+    color: #9ED1E0;
+}
+
+.hljs-title,
+.hljs-section {
+    color: #C8BB7A;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: #E09192;
+}
+
+.hljs-literal {
+    color: #78A960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+    color: #C8BB7A;
+}
+
+.hljs-meta {
+    color: #DEAAAB;
+}
+
+.hljs-meta-string {
+    color: #4d99BF;
+}
