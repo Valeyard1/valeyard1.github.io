@@ -1,3 +1,3 @@
 # Personal site
 
-## https://www.valeyard1.github.io
+That's the source code for my personal website. I'm building it from scratch, and inspiring in the [motherfuckingwebsite](http://motherfuckingwebsite.com/). I intend to not use too much JavaScript to be accessible to every browser. You can my website [here](http://valeyard1.github.io/).
