@@ -5,7 +5,7 @@
         <title>
 
             Connecting to the internet with wpa supplicant on Linux •
-            Leonardo Ferreira
+            Leonardo F.
 
         </title>
 
@@ -21,14 +21,14 @@
 
 
         <p>When installing a distro with a minimal installation, you have to connect to the internet via command line. I&#39;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don't want packages we don't need.</p>
-        <p>We are going to use these packages:</p>
+        <p>You will need these packages:</p>
 
         <ul>
             <li>wpa_supplicant</li>
             <li>dhcpcd</li>
         </ul>
 
-        <p>They are in almost all distribution by default. But, in case you don't have them, install with the commands below:</p>
+        <p>In some distributions they are installed by default. But, in case you don't have them, install with the commands below:</p>
 
         <p>On Arch Linux:</p>
         <pre><code>$ sudo pacman -S wpa_supplicant dhcpcd</code></pre>
@@ -43,37 +43,49 @@
         <pre><code>$ ip link show</code></pre>
 
         <p>This command will probably show three interfaces, eth0, wlan0 and one more.
-        The interface we need should be <code>wlp6s0</code>, <code>wlp2s0</code> or something like that. To enable the interface, run:</p>
+        The interface you need should be <code>wlp6s0</code>, <code>wlp2s0</code> or something like that. To enable the interface, run:</p>
         <pre><code>$ sudo ip link set up &lt;interface&gt;</code></pre>
 
         <p>If you don&#39;t know which network to connect, you can search it by every wifi close to your computer with this command:</p>
         <pre><code>$ sudo iw dev &lt;interface&gt; scan | grep SSID</code></pre>
 
-        <p>To connect to a normal wifi (WPA-PSK networks), we must generate the configuration file with <i>wpa_passphrase</i>.</p>
+        <p>To connect to a normal wifi (WPA-PSK networks), you must generate the configuration file with <i>wpa_passphrase</i>.</p>
         <pre><code># wpa_passhprase &lt;SSID&gt; &lt;PASSWORD&gt; &gt;&gt; /etc/wpa_supplicant/wpa_supplicant-&lt;device_name&gt;.conf</code></pre>
 
         <p>Your file should be like this:</p>
         <pre><code>network={
-    ssid="SSID"
-    #psk="PASSWORD"
+    ssid="&lt;SSID&gt;"
+    psk="&lt;PASSWORD&gt;"
     psk=&lt;some_numbers&gt;
 }</code></pre>
 
         <p>Now you have to start the DHCP client to enable the internet.</p>
         <pre><code>$ dhcpcd &amp;</code></pre>
-        <p>Your internet is configured and ready to use!</p>
+        <p>Your internet is configured and ready to be used!</p>
 
+        <h4 id="connect-to-a-network-with-autentication">Connect to a network with autentication</h4>
+        <p>If the network you are trying to connect needs autentication (you have to connect with a login and password), only the above steps won't work.</p>
+        <p>Edit your <code>/etc/wpa_supplicant/wpa_supplicant-&lt;device_name&gt;.conf</code> file, and leave the file this way:</p>
+
+        <pre><code>network={
+    ssid="SSID"
+    eap=LEAP
+    identity="&lt;YourLogin&gt;"
+    password="&lt;YourPassword&gt;"
+}</code></pre>
 
         <h4 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h4>
         <p>You may want to always connect automatically when you are close to the wifi, to do this, you have to tell your system to enable the DHCP by default. You do it with your <a href="https://en.wikipedia.org/wiki/Init">init</a> system:</p>
         <p><b>Obs:</b> <em>If you don&#39;t know what a init system is, you are probably using systemd, which is present in almost every linux distribution, such as Ubuntu, Mint, and derivates.</em></p>
-        <p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> as an init system:</p>
+        <p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a>:</p>
         <pre><code># systemctl enable dhcpcd.service</code></pre>
 
-        <p>If you are using <a href="https://wiki.voidlinux.eu/Runit">Runit</a> as an init system:</p>
-        <pre><code># ln -s /etc/sv/dhcpcd /var/service/</code></pre><hr>
+        <p>If you are using <a href="https://wiki.voidlinux.eu/Runit">runit</a>:</p>
+        <pre><code># ln -s /etc/sv/dhcpcd /var/service/</code></pre>
 
+        <p> You can have as much networks in the file as you want, when you get close to one of them, it will connect automatically.</p>
 
+        <hr>
 
         <p align="center">
         <a href="../about/index.html">
