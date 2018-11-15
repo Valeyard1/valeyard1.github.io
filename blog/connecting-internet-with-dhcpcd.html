@@ -59,6 +59,10 @@
     psk=&lt;some_numbers&gt;
 }</code></pre>
 
+        <p>Enable the wpa_supplicant to connect to the network with the following command:</p>
+        <pre><code># wpa_supplicant -B -Dwext -i<interface> -c/etc/wpa_supplicant/wpa_supplicant-<interface>.conf 1>/etc/wpa_supplicant/wpa.log 2>&1 &
+        <p>This command will make wpa_supplicant run in the background and redirect the output (stdout) and stderr to the file wpa.log, so if you can't connect, show the content of this file to know what's wrong.</p>
+
         <p>Now you have to start the DHCP client to enable the internet.</p>
         <pre><code>$ dhcpcd &amp;</code></pre>
         <p>Your internet is configured and ready to be used!</p>
