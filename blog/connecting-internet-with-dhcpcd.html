@@ -42,7 +42,7 @@
         <p>Now you need to enable the wireless interface to connect. To see what&#39;s your interface, run:</p>
         <pre><code>$ ip link show</code></pre>
 
-        <p>This command will probably show three interfaces, eth0, wlan0 and one more.
+        <p>This command will probably show two or more network interfaces, the loopback, and wireless.
         The interface you need should be <code>wlp6s0</code>, <code>wlp2s0</code> or something like that. To enable the interface, run:</p>
         <pre><code>$ sudo ip link set up &lt;interface&gt;</code></pre>
 
@@ -55,9 +55,12 @@
         <p>Your file should be like this:</p>
         <pre><code>network={
     ssid="&lt;SSID&gt;"
-    psk="&lt;PASSWORD&gt;"
+    #psk="&lt;PASSWORD&gt;"
     psk=&lt;some_numbers&gt;
 }</code></pre>
+
+        <p>If you don't want your wifi passwords stored in plain text (although only root can view), you should delete the commented line.</p>
+        <br>
 
         <p>Enable the wpa_supplicant to connect to the network with the following command:</p>
         <pre><code># wpa_supplicant -B -Dwext -i&lt;interface&gt; -c/etc/wpa_supplicant/wpa_supplicant-&lt;interface&gt;.conf 1>/etc/wpa_supplicant/wpa.log 2>&1 &</code></pre>
