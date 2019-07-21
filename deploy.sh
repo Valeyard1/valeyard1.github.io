@@ -25,6 +25,8 @@ cp -r public /tmp
 
 git checkout master
 
+rm -rf *
+
 mv /tmp/public/* .
 
 git add .
