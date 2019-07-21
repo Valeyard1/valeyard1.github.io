@@ -1,0 +1,58 @@
+baseURL = "valeyard1.github.io"
+languageCode = "en-us"
+title = "Leonardo F."
+theme = "ezhil"
+
+pygmentsstyle = "vs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+googleAnalytics = "UA-144225418-1"
+disqusShortname = "valeyard"
+
+[params]
+	subtitle = ""
+	# Number of posts to show in recent posts list.
+	recentPostsCount = 5
+	# Content types which are excluded from recent posts and archive page.
+	excludedTypes = ["page"]
+	disableDisqusTypes = ["page"]
+	featherIconsCDN = true
+
+[[menu.main]]
+name = "home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "about"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "tags"
+url = "/tags"
+weight = 4
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/valeyard1"
+
+[[params.social]]
+name = "Mail"
+icon = "mail"
+url = "mailto:leonardofe@protonmail.com"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+[taxonomies]
+   tag = "tags"
