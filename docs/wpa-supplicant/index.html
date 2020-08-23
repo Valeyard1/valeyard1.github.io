@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>How to connect to the internet with wpa supplicant - Leonardo F.</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="How to connect to the internet with wpa supplicant" />
+<meta property="og:description" content="When installing a distro with a minimal installation, you have to connect to the internet via command line. I&rsquo;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don&rsquo;t want packages we don&rsquo;t need.
+You will need these packages:
+ wpa_supplicant dhcpcd  In some distributions they are installed by default." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/wpa-supplicant/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2018-06-05T22:19:42-03:00" />
+<meta property="article:modified_time" content="2018-06-05T22:19:42-03:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="How to connect to the internet with wpa supplicant"/>
+<meta name="twitter:description" content="When installing a distro with a minimal installation, you have to connect to the internet via command line. I&rsquo;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don&rsquo;t want packages we don&rsquo;t need.
+You will need these packages:
+ wpa_supplicant dhcpcd  In some distributions they are installed by default."/>
+<meta name="application-name" content="Leonardo F.">
+<meta name="apple-mobile-web-app-title" content="Leonardo F."><meta name="theme-color" content="#000000"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/wpa-supplicant/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to connect to the internet with wpa supplicant",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/wpa-supplicant\/"
+        },"image": ["\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "linux","wordcount":  511 ,
+        "url": "\/wpa-supplicant\/","datePublished": "2018-06-05T22:19:42-03:00","dateModified": "2018-06-05T22:19:42-03:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Valeyard","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Leonardo F."
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Leonardo F.">Leonardo F.</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Leonardo F.">Leonardo F.</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">How to connect to the internet with wpa supplicant</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Leonardo F.</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-06-05">2018-06-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;511 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#connect-to-a-network-with-autentication">Connect to a network with autentication</a></li>
+    <li><a href="#connect-automatically-on-the-boot-up">Connect automatically on the boot up</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>When installing a distro with a minimal installation, you have to connect to the internet via command line. I&rsquo;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don&rsquo;t want packages we don&rsquo;t need.</p>
+<p>You will need these packages:</p>
+<ul>
+<li>wpa_supplicant</li>
+<li>dhcpcd</li>
+</ul>
+<p>In some distributions they are installed by default. But, in case you don&rsquo;t have them, install with the commands below:</p>
+<p>On Arch Linux:</p>
+<pre><code>$ sudo pacman -S wpa_supplicant dhcpcd
+</code></pre>
+<p>On Ubuntu:</p>
+<pre><code>$ sudo apt install wpa_supplicant dhcpcdp
+</code></pre>
+<p>On <a href="https://voidlinux.org/" target="_blank" rel="noopener noreffer">Void Linux</a>:</p>
+<pre><code>$ sudo xbps-install -S wpa_supplicant dhcpcd
+</code></pre>
+<p>Now you need to enable the wireless interface to connect, to see what&rsquo;s your interface,
+run:</p>
+<pre><code>$ ip link show
+</code></pre>
+<p>This command will probably show two or more network interfaces, the loopback, and wireless. The interface you need should be wlp6s0, wlp2s0 or something like that. To enable the interface, run:</p>
+<pre><code>$ sudo ip link set up &lt;interface&gt;
+</code></pre>
+<p>If you don&rsquo;t know which network to connect, you can search it by every wifi close to your computer with this command:
+$ sudo iw dev <interface> scan | grep SSID</p>
+<p>To connect to a normal wifi (WPA-PSK networks), you must generate the configuration file
+with <em>wpa_passphrase</em>.</p>
+<pre><code># wpa_passhprase &lt;SSID&gt; &lt;PASSWORD&gt; &gt;&gt; /etc/wpa_supplicant/wpa_supplicant-&lt;device_name&gt;.conf
+</code></pre>
+<p>Your file should be like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">network</span><span class="o">={</span>
+    <span class="nv">ssid</span><span class="o">=</span><span class="s2">&#34;SSID&#34;</span>
+    <span class="c1">#psk=&#34;PASSWORD&#34;</span>
+    <span class="nv">psk</span><span class="o">=</span>&lt;some_numbers&gt;
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If you don&rsquo;t want your wifi passwords stored in plain text (although only root can view), you should delete the commented line.</p>
+<p>Enable the wpa_supplicant to connect to the network with the following command:</p>
+<pre><code># wpa_supplicant -B -Dwext -i&lt;interface&gt; -c/etc/wpa_supplicant/wpa_supplicant-&lt;interface&gt;.conf 1&gt;/etc/wpa_supplicant/wpa.log 2&gt;&amp;1 &amp;
+</code></pre>
+<p>This command will make wpa_supplicant run in the background and redirect the output (stdout) and stderr to the file wpa.log, so if you can&rsquo;t connect, read the content of this file to know what&rsquo;s wrong.</p>
+<p>Now you have to start the DHCP client to enable the internet.</p>
+<pre><code>$ dhcpcd
+</code></pre>
+<p>Your internet is configured and ready to be used!</p>
+<h2 id="connect-to-a-network-with-autentication">Connect to a network with autentication</h2>
+<p>If the network you are trying to connect needs autentication (you have to connect with a login and password), only the above steps won&rsquo;t work.</p>
+<p>Edit your <code>/etc/wpa_supplicant/wpa_supplicant-&lt;device_name&gt;.conf</code> file, and leave the file this way:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">network</span><span class="o">={</span>
+    <span class="nv">ssid</span><span class="o">=</span><span class="s2">&#34;SSID&#34;</span>
+    <span class="nv">eap</span><span class="o">=</span>LEAP
+    <span class="nv">identity</span><span class="o">=</span><span class="s2">&#34;&lt;YourLogin&gt;&#34;</span>
+    <span class="nv">password</span><span class="o">=</span><span class="s2">&#34;&lt;YourPassword&gt;&#34;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="connect-automatically-on-the-boot-up">Connect automatically on the boot up</h2>
+<p>You may want to always connect automatically when you are close to the wifi, to do this, you
+have to tell your system to enable the DHCP by default. You can do it with your <a href="https://en.wikipedia.org/wiki/Init" target="_blank" rel="noopener noreffer">init</a> system:</p>
+<p><strong>Obs:</strong> <em>If you don&rsquo;t know what is it, you are probably using <strong>systemd</strong>, which is present in almost every linux distribution, such as Ubuntu, Mint, and derivates.</em></p>
+<p>If you are using <a href="https://en.wikipedia.org/wiki/Systemd" target="_blank" rel="noopener noreffer">systemd</a> as an init system:</p>
+<pre><code>$ sudo systemctl enable dhcpcd.service
+</code></pre>
+<p>If you are using <a href="https://wiki.voidlinux.eu/Runit" target="_blank" rel="noopener noreffer">Runit</a> as an init system:</p>
+<pre><code># ln -s /etc/sv/dhcpcd /var/service/
+</code></pre>
+<p>You can have as much networks in the file as you want, when you get close to one of them, it will connect automatically.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-06-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/wpa-supplicant/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/wpa-supplicant/" data-title="How to connect to the internet with wpa supplicant" data-hashtags="linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/wpa-supplicant/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/wpa-supplicant/" data-title="How to connect to the internet with wpa supplicant"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="/wpa-supplicant/"><i class="fab fa-reddit fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Leonardo F.</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://Valeyard.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://valeyard1.github.io/sitemap.xml

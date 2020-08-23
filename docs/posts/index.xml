@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Leonardo F.</title>
+        <link>/posts/</link>
+        <description>All Posts | Leonardo F.</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>leonardofe@pm.me (Leonardo F.)</managingEditor>
+            <webMaster>leonardofe@pm.me (Leonardo F.)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 05 Jun 2018 22:19:42 -0300</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>How to connect to the internet with wpa supplicant</title>
+    <link>/wpa-supplicant/</link>
+    <pubDate>Tue, 05 Jun 2018 22:19:42 -0300</pubDate>
+    <author>Author</author>
+    <guid>/wpa-supplicant/</guid>
+    <description><![CDATA[When installing a distro with a minimal installation, you have to connect to the internet via command line. I&rsquo;m gonna show you how to connect with the simplest tool, without all those unecessarily programs, like NetworkManager, Connman, and other bloat things. After all, we are using a minimal installation, we don&rsquo;t want packages we don&rsquo;t need.
+You will need these packages:
+ wpa_supplicant dhcpcd  In some distributions they are installed by default.]]></description>
+</item></channel>
+</rss>
