@@ -1,5 +1,5 @@
 baseURL = ""
-publishDir = "docs"
+# publishDir = "docs"
 # [en, zh-cn, fr, pl, ...] determines default content language
 # [en, zh-cn, fr, pl, ...] 设置默认的语言
 defaultContentLanguage = "en"
@@ -38,7 +38,7 @@ enableEmoji = true
     # [UA-XXXXXXXX-X] google analytics code
     googleAnalytics = ""
     # copyright description used only for seo schema
-    copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+    copyright = ""
     # Menu config
     [languages.en.menu]
       [[languages.en.menu.main]]
@@ -78,7 +78,7 @@ enableEmoji = true
         # optional site title override for the app when added to an iOS home screen or Android launcher
         title = "Leonardo F."
         # whether to omit favicon resource links
-        noFavicon = false
+        noFavicon = true
         # modern SVG favicon to use in place of older style .png and .ico files
         svgFavicon = ""
         # Android browser theme color
@@ -118,9 +118,9 @@ enableEmoji = true
           # Gravatar Email for preferred avatar in home page
           gravatarEmail = ""
           # URL of avatar shown in home page
-          avatarURL = ""
+          avatarURL = "https://blush.ly/qFwxsd15T/p"
           # title shown in home page (HTML format is supported)
-          title = "Hi, I'm Leonardo"
+          title = "Hi, I'm Leonardo!"
           # subtitle shown in home page
           subtitle = "I'm a DevOps Engineer working for <a href='https://zup.com.br'> @ZupInnovation</a>"
           license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
@@ -265,7 +265,7 @@ enableEmoji = true
     copyright = false
     # whether to show the author
     # 是否显示作者
-    author = true
+    author = false
     # site creation time
     # 网站创立年份
     since = 2019
@@ -274,7 +274,7 @@ enableEmoji = true
     icp = ""
     # license info (HTML format is supported)
     # 许可协议信息 (支持 HTML 格式)
-    license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+    license= ''
 
   # Section (all posts) page config
   # Section (所有文章) 页面配置
